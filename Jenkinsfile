@@ -15,19 +15,19 @@ pipeline {
             steps {
                 sh 'echo "Test start"'
                 sh './gradlew clean test'
+                publishHTML (target : [allowMissing: false,
+                                       alwaysLinkToLastBuild: true,
+                                       keepAll: true,
+                                       reportDir: 'build/reports/test',
+                                       reportFiles: 'index.html',
+                                       reportName: 'My Reports',
+                                       reportTitles: 'The Report'])
             }
         }
         stage('Deploy') {
             steps {
                 sh 'echo "Deploy start"'
             }
-        }
-    }
-
-    post {
-        always {
-            archiveArtifacts 'build/libs/*.jar'
-//            junit 'build/reports/**/*.xml'
         }
     }
 }
