@@ -25,8 +25,8 @@ pipeline {
 
     post {
         always {
-            archiveArtifacts 'build/libs/**/*.jar'
-            junit 'build/reports/**/*.xml'
+            archiveArtifacts 'build/libs/*.jar'
+//            junit 'build/reports/**/*.xml'
         }
     }
 }
