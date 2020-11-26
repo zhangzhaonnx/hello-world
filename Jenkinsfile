@@ -29,4 +29,10 @@ pipeline {
             }
         }
     }
+
+    post {
+        always {
+            sh './gradlew clean'
+        }
+    }
 }
