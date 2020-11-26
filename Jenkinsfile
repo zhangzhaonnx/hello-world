@@ -4,9 +4,21 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('Build') {
             steps {
-                echo 'Hello World'
+                sh 'echo "Build start"'
+                sh './gradlew clean build'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'echo "Test start"'
+                sh './gradlew clean test'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'echo "Deploy start"'
             }
         }
     }
