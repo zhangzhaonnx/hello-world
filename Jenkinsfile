@@ -21,10 +21,11 @@ pipeline {
                 sh 'echo "Deploy start"'
             }
         }
-        post {
-            always {
-                junit 'build/reports/**/*.xml'
-            }
+    }
+
+    post {
+        always {
+            junit 'build/reports/**/*.xml'
         }
     }
 }
