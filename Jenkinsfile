@@ -8,6 +8,7 @@ pipeline {
             steps {
                 sh 'echo "Build start"'
                 sh './gradlew clean build'
+                archiveArtifacts 'build/libs/*.jar'
             }
         }
         stage('Test') {
