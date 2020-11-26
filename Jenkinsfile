@@ -6,25 +6,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'echo "Build start"'
-                sh './gradlew build -x test'
-            }
-
-            post {
-                always {
-                    archiveArtifacts 'build/libs/*.jar'
-                }
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'echo "Test start"'
-                sh './gradlew test'
+                sh './gradlew build'
             }
 
             post {
                 always {
                     junit 'build/test-results/test/*.xml'
+                    archiveArtifacts 'build/libs/*.jar'
                 }
             }
         }
